@@ -5,12 +5,13 @@ pipeline {
 			steps {
 				sh './gradlew build --no-daemon'
 			}
-		}
-		post{
-			success {
-				archiveArtifacts 'dist/trainSchedule.zip'
+			post {
+				success {
+					archiveArtifacts 'dist/trainSchedule.zip'
+				}
 			}
 		}
+
 	}
 
 }
