@@ -1,6 +1,6 @@
 pipeline {
 	agent {
-		label 'my-slave-agent'
+		label 'slave'
 	}
 	environment {
 		registry = '971213/jenkins-training'
