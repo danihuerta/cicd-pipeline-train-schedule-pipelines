@@ -1,11 +1,10 @@
 pipeline {
-
+	agent {
+		label 'my-slave-agent'
+	}
 	environment {
 		registry = '971213/jenkins-training'
 		registryCredential = 'dockerhub'
-	}
-	agent {
-		label 'my-slave-agent'
 	}
 	stages {
 		stage('Building image'){
