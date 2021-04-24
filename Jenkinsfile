@@ -1,14 +1,32 @@
 pipeline {
-	agent any
+
+	environment {
+		registry = '971213/jenkins-training'
+		registryCredential = 'dockerhub'
+	}
+	agent {
+		label 'my-slave-agent'
+	}
 	stages {
-		stage('Build'){
-			steps {
-				sh './gradlew build --no-daemon'
+		stage('Building image'){
+			steps{
+				 script{
+				 	dockerImage = docker build registry + ":my-app"
+				 }
 			}
-			post {
-				success {
-					archiveArtifacts 'dist/trainSchedule.zip'
+		}
+		stage('Deploy image'){
+			steps{
+				script {
+					docker.withRegistry( '', registryCredential ){
+						dockerImage.push()
+					}
 				}
+			}
+		}
+		stage('Remove unused docker image'){
+			steps{
+				sh "docker rmi $registry:my-app"
 			}
 		}
 
