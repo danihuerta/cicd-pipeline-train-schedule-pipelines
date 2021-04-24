@@ -3,7 +3,7 @@ pipeline {
 		label 'slave'
 	}
 	environment {
-		registry = '971213/jenkins-training'
+		registry = "971213/jenkins-training"
 		registryCredential = 'dockerhub'
 	}
 	stages {
