@@ -1,1 +1,1 @@
-FROM jenkins/slave
+FROM jenkins/jenkins:lts
