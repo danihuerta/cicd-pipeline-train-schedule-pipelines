@@ -1,6 +1,8 @@
 pipeline {
 	agent {
-		label 'slave'
+		dockerfile {
+			filename 'dockerfile.slave'	
+		}
 	}
 	environment {
 		registry = "971213/jenkins-training"
